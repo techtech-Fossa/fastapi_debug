@@ -1,6 +1,6 @@
 # ✅ FastAPI + Docker + VSCode Remote-Container デバッグ環境
 ## 概要
-FastAPIをDockerコンテナで起動し、Visual Studio Codeからデバッグ実行を行うための環境構築サンプル
+FastAPIをDockerコンテナで起動し、Visual Studio CodeからWSLホスト側のワークスペースでデバッグ実行を行うための環境構築サンプル
 
 ---
 ## ✅ 実行手順
@@ -120,26 +120,26 @@ Visual Studio Code上で、ブレークポイントで処理が止まってい�
 
 ### **VSCode**
 
-- **IDE**としてコード編集・デバッグ操作を行う。
-- **Remote-Container 拡張機能**でコンテナをワークスペースとして開く。
-- **Python 拡張機能**＋**Debugger UI**でデバッグ。
+- **IDE**としてコード編集・デバッグ操作を行う
+- **Attachモード**でホストからコンテナに接続
+- **Python拡張機能**＋**Debugger UI**でデバッグ
 
-### **Docker コンテナ**
+### **Dockerコンテナ**
 
-- FastAPI アプリを隔離された環境で実行。
-- **debugpy**を起動し、VSCode からのリモートデバッグを受け付ける。
+- FastAPIアプリを隔離された環境で実行
+- **debugpy**を起動し、VSCodeからのリモートデバッグを受け付ける
 
-### **Python デバッグランタイム（debugpy）**
+### **Pythonデバッグランタイム（debugpy）**
 
-- Python 公式デバッグプロトコルを実装。
-- `--listen 0.0.0.0:5678`で VSCode からの接続を待機。
-- 接続後に FastAPI アプリを起動。
+- Python公式デバッグプロトコルを実装
+- `--listen 0.0.0.0:5678`でVSCodeからの接続を待機
+- 接続後にFastAPIアプリを起動
 
 ### **FastAPI**
 
-- Python 製 Web フレームワーク。
-- Uvicorn で HTTP リクエストを処理。
-- debugpy 経由でブレークポイントが有効。
+- Python製Webフレームワーク
+- UvicornでHTTPリクエストを処理
+- debugpy経由でブレークポイントが有効
 
 ---
 
@@ -170,13 +170,13 @@ flowchart TD
 
 ## ✅ デバッグの仕組み
 
-1.  **Docker コンテナ起動**\
-    `docker-compose up`で FastAPI コンテナが起動し、debugpy が 56781 ポートで待機。
-2.  **VSCode Remote-Container 接続**\
-    VSCode がコンテナをワークスペースとして開く。
-3.  **VSCode → debugpy に接続**\
-    VSCode が TCP で`localhost:56781`に接続し、ブレークポイントを有効化。
-4.  **FastAPI リクエスト発生**\
+1. **Docker コンテナ起動**  
+    docker-compose upでFastAPIコンテナが起動し、debugpyが5678ポートで待機(コンテナ側)
+1. **VSCode → debugpy に接続**  
+    VSCodeはWSLホスト側でワークスペースを開き、Attachモードで56781に接続(WSLホスト側)
+1. **ブレークポイント有効化**  
+    接続後、FastAPIが起動し、ブレークポイントが有効化
+4.  **FastAPI リクエスト発生**  
     `http://localhost:8001`にアクセスすると、ブレークポイントで停止。
 
 ---
