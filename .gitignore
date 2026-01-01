@@ -1,0 +1,6 @@
+## venv dir
+.venv/
+
+## __pycache__ dir
+**/__pycache__/
+**/__pycache__/*
