@@ -2,17 +2,32 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Attach to FastAPI in Docker",
+      "name": "Attach to FastAPI in Docker #1",
       "type": "debugpy",
       "request": "attach",
       "connect": {
         "host": "localhost",
-        "port": 5678
+        "port": 56781
       },
       "pathMappings": [
         {
           "localRoot": "${workspaceFolder}/app",
           "remoteRoot": "/app"
+        }
+      ]
+    },
+    {
+      "name": "Attach to FastAPI in Docker #2",
+      "type": "debugpy",
+      "request": "attach",
+      "connect": {
+        "host": "localhost",
+        "port": 56782
+      },
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/app2",
+          "remoteRoot": "/app2"
         }
       ]
     }
