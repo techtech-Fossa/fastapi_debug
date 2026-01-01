@@ -1,7 +1,6 @@
 {
   "name": "FastAPI Dev Container",
-  "dockerComposeFile": "../../docker-compose.yml",
-  "service": "fastapi",
+  "dockerFile": "../Dockerfile",
   "workspaceFolder": "/app",
   "customizations": {
     "vscode": {

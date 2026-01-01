@@ -7,5 +7,4 @@ services:
     volumes:
       - ./app:/app
     ports:
-      - "8000:8000" # FastAPI
-      - "5678:5678" # debugpy
+      - "8000:8000"
