@@ -8,8 +8,8 @@ services:
       - ./app:/app
     ports:
       - "8001:8000" # FastAPI
-      - "56781:5678" # debugpy
-    command: >
+      - "56781:5678" # debugpy用のポート設定
+    command: > # debugpyのインストールと実行(リッスン)
       sh -c "pip install --no-cache-dir debugpy &&
       python3 -m debugpy --listen 0.0.0.0:5678 --wait-for-client
       -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
@@ -21,8 +21,8 @@ services:
       - ./app2:/app2
     ports:
       - "8002:8000" # FastAPI
-      - "56782:5678" # debugpy
-    command: >
+      - "56782:5678" # debugpy用のポート設定
+    command: > # debugpyのインストールと実行(リッスン)
       sh -c "pip install --no-cache-dir debugpy &&
       python3 -m debugpy --listen 0.0.0.0:5678 --wait-for-client
       -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
