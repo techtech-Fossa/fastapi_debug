@@ -3,7 +3,7 @@
 FastAPIをDockerコンテナで起動し、Visual Studio Codeからデバッグ実行を行うための環境構築サンプル
 
 ---
-## 動作確認
+## ✅ 実行手順
 本リポジトリをCLONEした場所でコンテナ起動コマンドを実行.  
 ```
 docker compose up --build
@@ -142,14 +142,5 @@ flowchart LR
     VSCode が TCP で`localhost:5678`に接続し、ブレークポイントを有効化。
 4.  **FastAPI リクエスト発生**\
     `http://localhost:8000`にアクセスすると、ブレークポイントで停止。
-
----
-
-## ✅ 実行手順
-
-1.  VSCode で「Remote-Containers: Open Folder in Container」を選択。
-2.  コンテナ起動後、**デバッグビュー**で「Attach to FastAPI in Docker」を選択。
-3.  ブレークポイントを設定 → `http://localhost:8000` にアクセス。
-4.  Swagger UI は `http://localhost:8000/docs`。
 
 ---
